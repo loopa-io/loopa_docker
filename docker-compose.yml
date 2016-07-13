@@ -1,0 +1,14 @@
+version: '2'
+services:
+  web:
+    build: ./revel/
+    command: revel run github.com/naitsric/loopa_chat/
+    volumes:
+      - ~/go/src/:/root/go/src/
+      - ~/go/src/dev/:/root/go/src/dev/
+    ports:
+      - "9000:9000"
+    links:
+      - db
+  db:
+    image: mongo
